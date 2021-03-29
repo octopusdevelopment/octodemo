@@ -7,8 +7,7 @@
 <!-- stella-orre/index-3.html  30 Nov 2019 03:48:03 GMT -->
 <head>
 <meta charset="utf-8">
-<title>PMATEL - {{product.name}} </title>
-
+<title>Octodemo - {{product.name}} </title>
 <!-- Stylesheets -->
 <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
 <link href="{% static 'css/style.css' %}" rel="stylesheet">
@@ -23,6 +22,9 @@
 <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
 <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 
+{% block css %}
+
+{% endblock css %}
 </head>
 
 <body>
@@ -37,7 +39,7 @@
         <div class="header-top">
             <div class="auto-container clearfix">
                 <div class="top-left clearfix">
-                    <div class="text"><span class="icon flaticon-call-answer"></span> Besoin d'aide ? Appelez maintenant <a href="tel:+213550936128" class="number">+213 550 93 61 28</a></div>
+                    <div class="text"><span class="icon flaticon-call-answer"></span> Besoin d'aide ? Appelez maintenant <a href="tel:+213 553 96 16 12" class="number">+213 553 96 16 12</a></div>
 					
                 </div>
                 <!-- <div class="top-right clearfix">
@@ -57,7 +59,7 @@
                 <div class="auto-container clearfix">
                     <!--Info-->
                     <div class="logo-outer">
-                        <div class="logo"><a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="PMATEL logo" title="PMATEL - Site de ventes de produits électriques" width="80" height="80"></a></div>
+                        <div class="logo"><a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="Octo demo" title="Octodemo- Vendez sans plus vous soucier" style="width:120px; height:auto"></a></div>
                     </div>
 
                     <!--Nav Box-->
@@ -134,14 +136,15 @@
             <div class="close-btn"><span class="icon flaticon-cancel"></span></div>
             
             <nav class="menu-box">
-                <div class="nav-logo"><a href="{% url 'index' %}"><img src="{% static 'images/logo.png' %}" alt="PMATEL logo" title="PMATEL - site de ventes en ligne de produits électriques"></a></div>
+                <div class="nav-logo"><a href="{% url 'index' %}"><img src="{% static 'images/logo-white.png' %}" alt="Octo demo" title="Octodemo- Vendez sans plus vous soucier" style="width:120px; height:auto"></a></div>
                 <ul class="navigation clearfix"><!--Keep This Empty / Menu will come through Javascript--></ul>
 				<!--Social Links-->
 				<div class="social-links">
 					<ul class="clearfix">
-						<li><a href="https://www.facebook.com/camebptalgerie"><span class="fab fa-facebook-square"></span></a></li>
-						<li><a href="#"><span class="fab fa-instagram"></span></a></li>
-					</ul>
+						<li><a href="https://www.facebook.com/OctopusConsultingAlgerie"><span class="fab fa-facebook-square"></span></a></li>
+						<li><a href="https://www.instagram.com/octopus.consulting/"><span class="fab fa-instagram"></span></a></li>
+                        <li><a href="https://www.linkedin.com/company/dz-octopus-consulting/"><span class="fab fa-linkedin-in"></span></a></li>
+                    </ul>
                 </div>
             </nav>
         </div><!-- End Mobile Menu -->
@@ -149,7 +152,7 @@
     </header>
     <!-- End Main Header -->
 
-    <section class="page-title" style="background-image:url({% static 'images/background/5.jpg' %})">
+    <section class="page-title" style="background-image:url({% static 'images/background/home_background_2.jpg' %})">
     	<div class="auto-container">
         	<h2>Détails du produit</h2>
             <ul class="page-breadcrumb">
@@ -188,12 +191,12 @@
                                     <div class="other-options clearfix">
                                         <form action="{% url 'cart:cart_add_one_product_with_quantity' product.slug product.id %}" method="POST" id="product_details_form">
                                         <div class="item-quantity"><label class="field-label">Quantité :</label><input class="quantity-spinner" type="number" value="1" min="1" name="quantity"></div>
-                                        <div class="row">
-                                            <div class="col">
+                                        <div class="row justify-content-center">
+                                            <div class="col text-center">
                                                 <button type="submit" class="theme-btn cart-btn">Ajouter au panier</button>
                                             </div>
                                             
-                                            <div class="col">
+                                            <div class="col text-center">
                                                 <a href="{% url 'orders:order_create_one_product' product.id %}" class="theme-btn cart-btn">Acheter maintenant</a>
                                             </div>
                                             {% csrf_token %} 
@@ -231,9 +234,9 @@
                                 <div class="tab active-tab" id="prod-details">
                                     <div class="content">
                                         {% if product.sub_title %}
-                                        <h3 style="text-transform:capitalize">{{product.sub_title}}</h3>
+                                        <h4 class="first_letter_capital">{{product.sub_title}}</h4>
                                         {% endif %}
-                                        <h4 style="text-transform:capitalize">Catégorie: {{product.category}}</h4>
+                                        <h5 class="first_letter_capital">Catégorie: {{product.category}}</h5>
                                         <p>{{product.get_description}}</p>
                                     </div>
                                 </div>
@@ -335,7 +338,7 @@
 	</section>
     {% endif %}
 	<!--Main Footer-->
-    <footer class="main-footer">
+       <footer class="main-footer">
 		<div class="auto-container">
         	<!--Widgets Section-->
             <div class="widgets-section">
@@ -349,14 +352,14 @@
                             <div class="footer-column col-lg-7 col-md-6 col-sm-12">
                                 <div class="footer-widget logo-widget">
 									<div class="logo">
-                                    	<a href="{% url 'index' %}"><img src="{%static 'images/logo.png' %}" width= "80" height="80" alt="PMATEL - Vente en ligne de produits électriques" /></a>
+                                    	<a href="{% url 'index' %}"><img src="{% static 'images/logo-white.png' %}" alt="Octo demo" title="Octodemo- Vendez sans plus vous soucier" style="width:120px; height:auto"></a>
                                     </div>
-                                    <div class="text">PMATEL - Le magasin de réference pour la vente des produits électriques!</div>
+                                    <div class="text">Octodemo - Le site de réference pour la vente en ligne!</div>
                                     <ul class="social-icons">
-                                        <li><a href="#"><span class="fab fa-facebook-f"></span></a></li>
-                                        <li><a href="#"><span class="fab fa-linkedin-in"></span></a></li>
-                                        <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>
-                                    </ ul>
+                                        <li><a href="https://www.facebook.com/OctopusConsultingAlgerie"><span class="fab fa-facebook-f"></span></a></li>
+                                        <li><a href="https://www.linkedin.com/company/dz-octopus-consulting/"><span class="fab fa-linkedin-in"></span></a></li>
+                                        <li><a href="https://www.instagram.com/octopus.consulting/"><span class="fab fa-instagram"></span></a></li>
+                                    </ul>
 								</div>
 							</div>
 							
@@ -367,7 +370,7 @@
 									<div class="widget-content">
 										<ul class="list">
 											<li><a href="{% url 'index' %}">Accueil</a></li>
-                                        	<li><a href="{% url 'about' %}">A propos de PMATEL</a></li>
+                                        	<li><a href="{% url 'about' %}">A propos de Octodemo</a></li>
                                             <li><a href="{% url 'produits' %}">Catalog</a></li>
                                             <li><a href="#">FAQ (Bientôt)</a></li>
                                         </ul>
@@ -387,10 +390,10 @@
                                 <div class="footer-widget contact-widget">
 									<h2>Contact Info</h2>
 									<div class="widget-content">
-										<a href="tel:+213550936128" class="contact-number">+213 550 93 61 28</a>
+										<a href="tel:+213 553 96 16 12" class="contact-number">+213 553 96 16 12</a>
 										<ul>
-											<li>Coopérative les vergers 2 – N°10 / Birkhadem - Alger – ALGERIE</li>
-											<li>Email :<a href="mailto:camebptalgerie@pmatel.dz">camebptalgerie@pmatel.dz</a></li>
+											<li>Centre Zabana Blida / 09000 Blida, Algérie</li>
+											<li>Email :<a href="mailto:hello@octopus-consulting.com">hello@octopus-consulting.com</a></li>
 										</ul>
 									</div>
 								</div>
@@ -423,10 +426,10 @@
 			<!--Footer Bottom-->
             <div class="footer-bottom clearfix">
                 <div class="pull-left">
-                    <div class="copyright"><a href="https://octopus-consulting.com/">Octopus - 2021</a></div>
+                    <div class="copyright"><a href="https://octopus-consulting.com/">Copyright © 2021 Octopus-Consulting. Tous Droits Réservés.</a></div>
                 </div>
                 <div class="pull-right">
-                    <a href="{% url 'index' %}">Pmatel</a>
+                    <a href="{% url 'index' %}">Octodemo</a>
                 </div>
             </div>
 			
